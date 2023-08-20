@@ -1,0 +1,14 @@
+Good evening,
+
+I'm Samarth Sahu, and I'm thrilled to present my Statement of Purpose for the representative position at The Machine Learning Wing of AXIOS. I have a strong background in Deep Learning using OpenCV and have started exploring the fascinating field of NLP. I completed the Tensorflow Course by ZTM on Udemy, along with deep learning courses from CodeBasics and foundational Machine Learning courses from Code With Harry and CampusX.
+
+I've built multiple models using Kaggle datasets, learning from both hands-on experimentation and studying others' notebooks. Additionally, I've undertaken three Augmented Reality projects using Unity. Recently, I was involved in a Freelancing project aimed at automating the ballooning process in machine manufacturing. This involved using YOLOv8 by Ultralytics, PaddleOCR, and OpenCV to convert PDF inputs into ballooned PDFs, accompanied by an Excel file containing dimensions prioritized according to client preferences.At present, I'm engrossed in a Neural Net project integrating gesture recognition for tasks such as Play, Pause, Volume Control, and a hand cricket game reminiscent of childhood. 
+
+My initial interest in ML was sparked by an introductory session by the ML Wing during orientation. I aspire to nurture this interest by organizing events and competitions, providing platforms for more individuals to engage with this captivating field.
+
+In conclusion, I'm eager to contribute my knowledge and passion to The Machine Learning Wing, fostering a community of learners and innovators. I anticipate the opportunity to learn and grow within this dynamic environment.
+
+Thank you for considering my application.
+
+Best regards,
+Samarth Sahu
