@@ -24,8 +24,9 @@ BattingScore2inn = 0
 BowlPlayed2inn = 0
 showImgAI = False
 Target = 0
-outMessageTime = None
 InningPlayer = 0
+GameEnd = False
+gameEndTime = None
 Ballsleft = 0
 RunsLeft = 0
 
@@ -76,7 +77,8 @@ while True:
                 Bowler = "Samarth"      
 
                 cv2.putText(imgB,str(int(timer)),(620,605),cv2.FONT_HERSHEY_PLAIN, 10, (255,0,255), 7)
-                cv2.putText(imgB,f'2nd INNING',(400,110),cv2.FONT_HERSHEY_PLAIN, 6, (255,0,255), 6)
+                # if not GameEnd:  # Display only if the game hasn't ended
+                cv2.putText(imgB, f'2nd INNING', (400, 110), cv2.FONT_HERSHEY_PLAIN, 6, (255, 0, 255), 6)
                 cv2.putText(imgB,f'Batsman: {Batsman}',(100,780),cv2.FONT_HERSHEY_PLAIN, 2, (255,0,255), 2)
                 cv2.putText(imgB,f'Bowler: {Bowler}',(100,810),cv2.FONT_HERSHEY_PLAIN, 2, (255,0,255), 2)
                 cv2.putText(imgB,f'{BattingScore2inn}',(93,300),cv2.FONT_HERSHEY_PLAIN, 6, (255,0,255), 5)
@@ -114,26 +116,40 @@ while True:
                         Ballsleft += 1
                         Target = BattingScore1inn
                         RunsLeft = Target
+                        print(f'Runs Made: {BattingScore1inn}')
+                        print(f'Balls Played: {BowlPlayed1inn}\n\n')
+                        
 
                     elif InningPlayer == 1:
                         BattingScore2inn = BattingScore2inn + randomNumber
                         BowlPlayed2inn = BowlPlayed2inn + 1
                         Ballsleft -=1
                         RunsLeft = RunsLeft - randomNumber
+                        print(f'Runs Made: {BattingScore1inn}')
+                        print(f'Runs Left: {RunsLeft}')
+                        print(f'Balls Played: {BowlPlayed1inn}')
+                        print(f'Balls Left: {Ballsleft}\n\n')
+
                         if RunsLeft <=0:
-                            print("PC Wins")
+                            GameEnd = True
+                            gameEndTime = time.time()
+                            print("PC Wins\n\n")
                             break
 
                     
                 elif UserNumber == randomNumber:
 
                     if InningPlayer == 0:
+                        print('2nd INNING')
                         PlayerOut = True
                         outMessageTime = time.time()
                         InningPlayer = 1
 
+
                     else:
-                        print("You Win!")
+                        GameEnd = True
+                        gameEndTime = time.time()
+                        print("You Win!\n\n")
                         break
   
                 pyautogui.press('s')
@@ -142,7 +158,15 @@ while True:
             imgAI = cv2.resize(imgAI, (295,295))
             imgB = cvzone.overlayPNG(imgB, imgAI, (110, 410))   
 
-
+    # if GameEnd:
+    #     if RunsLeft <= 0:
+    #         cv2.putText(imgB, "PC Wins", (400,110),cv2.FONT_HERSHEY_PLAIN, 6, (255,0,255), 6)
+    #     else:
+    #         cv2.putText(imgB, "You Win!", (400,110),cv2.FONT_HERSHEY_PLAIN, 6, (255,0,255), 6)
+    #     if time.time() - gameEndTime >= 2:  # Display for 2 seconds
+    #         GameEnd = False
+    #         gameEndTime = None
+        
     cv2.imshow("BG", imgB)
 
     key = cv2.waitKey(1)
