@@ -34,14 +34,15 @@ detectorInd = HandDetector(detectionCon=0.8, maxHands=2)
 link_opened = False
 cTime = 0
 start_time = None
-tracking_duration = 50
+tracking_duration = 60
 current_emotion = None
 pTime = 0
 emotion_actions = {
     "happy": "xdg-open https://youtube.com/shorts/T8bO1iKu76g?feature=share",
-    "sad": "xdg-open http://google.com",
-    "angry": "xdg-open http://google.com",
-    "neutral": "xdg-open http://google.com"
+    "sad": "xdg-open https://www.youtube.com/watch?v=u0w-s6yid38",
+    "angry": "xdg-open https://www.youtube.com/watch?v=WcIcVapfqXw",
+    "neutral": "xdg-open https://i.imgflip.com/7wclr3.jpg",
+    "shocked": "https://www.youtube.com/shorts/yvBYSfb1-GE"
 }
 
 #############################################################
