@@ -3,7 +3,6 @@ import time
 import numpy as np
 import HandTrackingModel as htm
 import math
-import alsaaudio
 import subprocess
 from HandInfoDetector import HandInfo
 from Utils import EmotionDetector
@@ -19,10 +18,6 @@ wCam, hCam = 640, 480
 cap.set(3, wCam)
 cap.set(4, hCam)
 
-m = alsaaudio.Mixer()
-pmin_default, pmax_default = m.getrange()
-minVol = pmin_default
-maxVol = pmax_default
 
 
 tipIds = [4, 8, 12, 16, 20] #Finger Tips Id for Mediapipe
@@ -75,43 +70,12 @@ while True:
 
     if len(hands) != 0:
     
-        print(f' Number Of Hands: {numberOfHands}')
-
-        ### Volume Adjustment Code ###
-        if numberOfHands == '2':
-            print("Volume Activated")
-    
-            hand1 = hands[1]
-            lmlist = hand1["lmList"]
-            
-            x1, y1= lmlist[4][1], lmlist[4][2]
-            x2, y2= lmlist[8][1], lmlist[8][2]
-            cx, cy = (x1 + x2) // 2, (y1 + y2) // 2
-
-            cv2.circle(img, (x1,y1), 6, (255,0,255), cv2.FILLED)
-            cv2.circle(img, (x2,y2), 6, (255,0,255), cv2.FILLED)
-            cv2.line(img, (x1,y1), (x2,y2), (255,0,255), 3)
-            cv2.circle(img, (cx,cy), 10, (255,0,255), cv2.FILLED)
-            length = math.hypot(x2 - x1, y2 - y1)
-            # print(length)
-
-            if length < 15:
-                cv2.circle(img, (cx,cy), 10, (0, 255, 0), cv2.FILLED)
-            
-            volu = np.interp(length,[15,140],[0,100])
-            print(volu)
-            m.setvolume(int(volu))
-            cv2.putText(img,f'Volume: {int(volu)}',(400,50),cv2.FONT_HERSHEY_PLAIN, 2, (255,0,255), 2)
-           
+        print(f' Number Of Hands: {numberOfHands}')           
         ### Play Pause Activation Code ###
-        elif numberOfHands == '1':
+        if numberOfHands == '1':
             fingers = []
             hand1 = hands[0]
             lmlist = hand1["lmList"]
-            volu, volu1 = m.getvolume()
-            # print(volu)
-            cv2.putText(img,f'Volume: {volu}',(400,50),cv2.FONT_HERSHEY_PLAIN, 2, (255,0,255), 2)
-            
 
             ### Counting the Number Displayed on Hand ###
 

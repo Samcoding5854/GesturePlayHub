@@ -130,7 +130,8 @@ while True:
                         print(f'Balls Played: {BowlPlayed1inn}')
                         print(f'Balls Left: {Ballsleft}\n\n')
 
-                        if RunsLeft <=0:
+                        if RunsLeft <=0 or Ballsleft<0:
+                            RunsLeft = 0
                             GameEnd = True
                             gameEndTime = time.time()
                             print("PC Wins\n\n")
@@ -140,7 +141,7 @@ while True:
                 elif UserNumber == randomNumber:
 
                     if InningPlayer == 0:
-                        print('2nd INNING')
+                        print('\n\n2nd INNING\n\n')
                         PlayerOut = True
                         outMessageTime = time.time()
                         InningPlayer = 1

@@ -16,6 +16,7 @@ cap = cv2.VideoCapture(0)
 cap.set(3, width)
 cap.set(4, height) 
 gestureThreshold = 100
+finger_open = False
 
 while True:
     success, img = cap.read()
